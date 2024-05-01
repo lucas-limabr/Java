@@ -1,1 +1,1 @@
-# Java
+## Este é um repositório de códigos feitos em Java, os exercícios são propostos na faculdade e alguns problemas são do cotidiano, que eu abstraí e tornei possível a sua solução através de programa. O nível do código em Java é de iniciante para moderado 
