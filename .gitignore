@@ -25,3 +25,5 @@ replay_pid*
 /workspace_LP1/.metadata
 *.prefs
 /workspace_LP1/Simulador_NBAv2
+*.classpath
+*.project
