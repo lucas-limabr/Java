@@ -1,6 +1,4 @@
 package app;
-
-
 import modelo.Conferencia;
 import modelo.SuperFinal;
 import modelo.Times;
