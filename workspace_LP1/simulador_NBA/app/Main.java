@@ -1,9 +1,12 @@
 package app;
+
 import modelo.Conferencia;
 import modelo.SuperFinal;
 import modelo.Times;
 
 public class Main {
+
+	static int escolha = 0;
 
 	public static void main(String[] args) {
 
@@ -45,95 +48,101 @@ public class Main {
 		Conferencia oeste = new Conferencia(times_oeste);
 		Conferencia leste = new Conferencia(times_leste);
 
-		int escolha = Times.escolha();
+		escolha = Times.escolha();
 
 		if (escolha == 1) {
-			System.out.println("Conferência oeste: \n");
-			oeste.imprimeConf();
-			oeste.classifica();
+			conferenciaAtual(escolha);
+			imprimeClassifica(oeste);
+			inverteEscolha(escolha);
+			conferenciaAtual(escolha);
+			imprimeClassifica(leste);
 
-			System.out.println("\nConferência leste: \n");
-			leste.imprimeConf();
-			leste.classifica();
+			inverteEscolha(escolha);
+			imprimeClassificacao(oeste, escolha);
+			inverteEscolha(escolha);
+			imprimeClassificacao(leste, escolha);
 
-			oeste.imprimeClassificacao(escolha);
-			escolha = 2;
-			leste.imprimeClassificacao(escolha);
-
-			System.out.println("\nDisputa dos play-ins");
 			escolha = Times.escolha();
-
 			if (escolha == 1) {
-				oeste.play_in(escolha);
-				System.out.println("\nDisputa dos play-offs");
-				oeste.play_off();
-				oeste.semi_final();
-				oeste.Final();
-				
-				leste.play_in(escolha);
-				System.out.println("\nDisputa dos play-offs");
-				leste.play_off();
-				leste.semi_final();
-				leste.Final();
+				conferenciaAtual(escolha);
+				jogos(oeste);
+				inverteEscolha(escolha);
+				conferenciaAtual(escolha);
+				jogos(leste);
 			} else {
-				leste.play_in(escolha);
-				System.out.println("\nDisputa dos play-offs");
-				leste.play_off();
-				leste.semi_final();
-				leste.Final();
-				
-				oeste.play_in(escolha);
-				System.out.println("\nDisputa dos play-offs");
-				oeste.play_off();
-				oeste.semi_final();
-				oeste.Final();
+				conferenciaAtual(escolha);
+				jogos(leste);
+				inverteEscolha(escolha);
+				conferenciaAtual(escolha);
+				jogos(oeste);
 			}
 		} else {
-			System.out.println("Conferência leste: \n");
-			leste.imprimeConf();
-			leste.classifica();
+			conferenciaAtual(escolha);
+			imprimeClassifica(leste);
+			inverteEscolha(escolha);
+			conferenciaAtual(escolha);
+			imprimeClassifica(oeste);
 
-			System.out.println("\nConferência oeste: \n");
-			oeste.imprimeConf();
-			oeste.classifica();
+			inverteEscolha(escolha);
+			imprimeClassificacao(leste, escolha);
+			inverteEscolha(escolha);
+			imprimeClassificacao(oeste, escolha);
 
-			leste.imprimeClassificacao(escolha);
-			escolha = 1;
-			oeste.imprimeClassificacao(escolha);
-
-			System.out.println("\nDisputa dos play-ins");
 			escolha = Times.escolha();
-
 			if (escolha == 1) {
-				oeste.play_in(escolha);
-				System.out.println("\nDisputa dos play-offs");
-				oeste.play_off();
-				oeste.semi_final();
-				oeste.Final();
-				
-				escolha = 2;
-				leste.play_in(escolha);
-				System.out.println("\nDisputa dos play-offs");
-				leste.play_off();
-				leste.semi_final();
-				leste.Final();
+				conferenciaAtual(escolha);
+				jogos(oeste);
+				inverteEscolha(escolha);
+				conferenciaAtual(escolha);
+				jogos(leste);
 			} else {
-				leste.play_in(escolha);
-				System.out.println("\nDisputa dos play-offs");
-				leste.play_off();
-				leste.semi_final();
-				leste.Final();
-				
-				escolha = 1;
-				oeste.play_in(escolha);
-				System.out.println("\nDisputa dos play-offs");
-				oeste.play_off();
-				oeste.semi_final();
-				oeste.Final();
+				conferenciaAtual(escolha);
+				jogos(leste);
+				inverteEscolha(escolha);
+				conferenciaAtual(escolha);
+				jogos(oeste);
 			}
 		}
-		
-		SuperFinal super_campeao = new SuperFinal(leste, oeste);
+
+		Times campeao_oeste = new Times();
+		Times campeao_leste = new Times();
+		campeao_oeste = oeste.getCampeao();
+		campeao_leste = leste.getCampeao();
+
+		SuperFinal super_campeao = new SuperFinal(campeao_leste, campeao_oeste);
 		super_campeao.supercampeao();
+	}
+
+	// métodos auxiliares para o método main, para evitar duplicidade de código
+	private static void conferenciaAtual(int escolha) {
+		if (escolha == 1) {
+			System.out.println("\nConferência oeste\n");
+		} else {
+			System.out.println("\nConferência leste\n");
+		}
+	}
+
+	private static void inverteEscolha(int escolha) {
+		if (escolha == 1) {
+			Main.escolha = 2;
+		} else {
+			Main.escolha = 1;
+		}
+	}
+
+	private static void imprimeClassifica(Conferencia conf) {
+		conf.imprimeConf();
+		conf.classifica();
+	}
+
+	private static void imprimeClassificacao(Conferencia conf, int escolha) {
+		conf.imprimeClassificacao(escolha);
+	}
+
+	private static void jogos(Conferencia conf) {
+		conf.play_in();
+		conf.play_off();
+		conf.semi_final();
+		conf.Final();
 	}
 }

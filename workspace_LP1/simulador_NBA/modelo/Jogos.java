@@ -38,15 +38,12 @@ public class Jogos {
 	}
 
 	private void msgClassificouPlayoff(Times avancou) {
-		System.out.println(avancou.getNome() + " venceu e está nos play-offs");
+		System.out.println(avancou.getNome() + " venceu e está nos play-offs\n");
 	}
 
-	public void play_in(int escolha) {
-		if (escolha == 1) {
-			System.out.println("Conferência oeste\n");
-		} else {
-			System.out.println("Conferência leste\n");
-		}
+	public void play_in() {
+		int escolha;
+		System.out.println("Disputa dos play-ins");
 
 		this.seisClassificadosPlayOffs();
 		this.classificadosPlay_in();
@@ -54,7 +51,7 @@ public class Jogos {
 
 		timesClassificados(times_playin, "o play-in");
 
-		System.out.println("1º duelo dos play-ins");
+		System.out.println("\n1º duelo dos play-ins\n");
 		escolha = printarDuelos(times_playin.get(0), times_playin.get(1));
 		if (escolha == 1) {
 			times_playoff.add(times_playin.get(0));
@@ -66,7 +63,7 @@ public class Jogos {
 			msgClassificouPlayoff(times_playin.get(1));
 		}
 
-		System.out.println("2º duelo dos play-ins");
+		System.out.println("\n2º duelo dos play-ins\n");
 		escolha = printarDuelos(times_playin.get(2), times_playin.get(3));
 		if (escolha == 1) {
 			escolha = printarDuelos(times_playin.get(2), primeiro_perdedor);
@@ -96,6 +93,8 @@ public class Jogos {
 	}
 
 	public void play_off() {
+		System.out.println("\nDisputa dos play-offs");
+		
 		timesClassificados(times_playoff, "os play-offs");
 		int escolha;
 
@@ -115,10 +114,10 @@ public class Jogos {
 	private void addSemiFinal(int escolha, Times time1, Times time2) {
 		if (escolha == 1) {
 			semi_final.add(time1);
-			System.out.println(time1.getNome() + " avançou e está nas semi-finais");
+			System.out.println(time1.getNome() + " avançou e está nas semi-finais\n");
 		} else {
 			semi_final.add(time2);
-			System.out.println(time2.getNome() + " avançou e está nas semi-finais");
+			System.out.println(time2.getNome() + " avançou e está nas semi-finais\n");
 		}
 	}
 
@@ -136,10 +135,10 @@ public class Jogos {
 	private void addFinal(int escolha, Times time1, Times time2) {
 		if (escolha == 1) {
 			Final.add(time1);
-			System.out.println(time1.getNome() + " avançou e está na final!");
+			System.out.println(time1.getNome() + " avançou e está na final!\n");
 		} else {
 			Final.add(time2);
-			System.out.println(time2.getNome() + " avançou e está na final!");
+			System.out.println(time2.getNome() + " avançou e está na final!\n");
 		}
 	}
 
@@ -151,11 +150,11 @@ public class Jogos {
 
 		if (escolha == 1) {
 			System.out.println("E o grande campeão da conferência " + nomeConfFinal(Final.get(0)) + " é o "
-					+ Final.get(0).getNome());
+					+ Final.get(0).getNome() + "\n");
 			this.campeao = Final.get(0);
 		} else {
 			System.out.println("E o grande campeão da conferência " + nomeConfFinal(Final.get(1)) + " é o "
-					+ Final.get(1).getNome());
+					+ Final.get(1).getNome() + "\n");
 			this.campeao = Final.get(1);
 		}
 	}

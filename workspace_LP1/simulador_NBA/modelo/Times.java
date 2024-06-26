@@ -12,12 +12,15 @@ public class Times {
 		this.nome = nome;
 		this.conferencia = conf;
 	}
+	
+	public Times() {
+	}
 
 	public static int escolha() {
 		int escolha = 0;
 
 		while (escolha < 1 || escolha > 2) {
-			System.out.println("Vc quer começar pela qual conferência? ");
+			System.out.println("\nVc quer começar pela qual conferência? ");
 			System.out.println("[1] - oeste \n[2] - leste");
 			escolha = scanner.nextInt();
 		}

@@ -14,6 +14,10 @@ public class Conferencia extends Jogos {
 			this.times.add(item);
 		}
 	}
+	
+	public Conferencia() {
+		
+	}
 
 	public void imprimeConf() {
 		int i = 1;
@@ -24,8 +28,7 @@ public class Conferencia extends Jogos {
 	}
 
 	public void classifica() {
-		System.out.println("\n");
-		System.out.println("Classifique os 15 times: \n");
+		System.out.println("\nClassifique os 15 times: \n");
 
 		int posicao, k;
 		int verifica_posicao[] = new int[10];
@@ -35,9 +38,13 @@ public class Conferencia extends Jogos {
 				System.out.print("Insira o número do " + i + "º colocado: ");
 				posicao = scanner.nextInt();
 
-				for (k = 0; k < verifica_posicao.length; k++) {
+				for (k = 0; k < verifica_posicao[k]; k++) {
 					if (verifica_posicao[k] == posicao) {
 						posicao = -1;
+					}
+					
+					if(verifica_posicao[k] == 0) {
+						break;
 					}
 				}
 
@@ -46,7 +53,7 @@ public class Conferencia extends Jogos {
 			verifica_posicao[j] = posicao;
 			posicao -= 1;
 
-			//add ao arraylist da classe Jogos
+			// add ao arraylist da classe Jogos
 			this.setDez_classificados(times.get(posicao));
 		}
 	}
