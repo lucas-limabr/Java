@@ -3,7 +3,9 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Jogos {
+import interfaces.FasesJogos;
+
+public class Jogos implements FasesJogos {
 
 	Scanner scanner = new Scanner(System.in);
 	ArrayList<Times> dez_classificados = new ArrayList<Times>();

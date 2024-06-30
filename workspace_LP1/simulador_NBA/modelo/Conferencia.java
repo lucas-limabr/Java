@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Conferencia extends Jogos {
+import interfaces.ExibirClassificar;
+
+public class Conferencia extends Jogos implements ExibirClassificar {
 
 	ArrayList<Times> times = new ArrayList<Times>();
 	Scanner scanner = new Scanner(System.in);

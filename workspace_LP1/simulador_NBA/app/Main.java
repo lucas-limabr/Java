@@ -1,5 +1,7 @@
 package app;
 
+import interfaces.ExibirClassificar;
+import interfaces.FasesJogos;
 import modelo.Conferencia;
 import modelo.SuperFinal;
 import modelo.Times;
@@ -130,16 +132,16 @@ public class Main {
 		}
 	}
 
-	private static void imprimeClassifica(Conferencia conf) {
+	private static void imprimeClassifica(ExibirClassificar conf) {
 		conf.imprimeConf();
 		conf.classifica();
 	}
 
-	private static void imprimeClassificacao(Conferencia conf, int escolha) {
+	private static void imprimeClassificacao(ExibirClassificar conf, int escolha) {
 		conf.imprimeClassificacao(escolha);
 	}
 
-	private static void jogos(Conferencia conf) {
+	private static void jogos(FasesJogos conf) {
 		conf.play_in();
 		conf.play_off();
 		conf.semi_final();
