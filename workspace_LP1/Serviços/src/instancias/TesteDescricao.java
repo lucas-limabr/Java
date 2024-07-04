@@ -3,7 +3,7 @@ package instancias;
 import modelo.Cliente;
 import modelo.Contrato;
 import modelo.Funcionario;
-import modelo.Pessoas;
+import modelo.Pessoa;
 import modelo.Servico;
 
 public class TesteDescricao {
@@ -11,17 +11,17 @@ public class TesteDescricao {
 	public static void main(String[] args) {
 
 		// criando as instâncias da classe Pessoas
-		Pessoas p1 = new Pessoas("Lucas", "Lima", "lucas@gmail.com", "M");
-		Pessoas p2 = new Pessoas("Ana", "Carolina", "ana@gmail.com", "F");
+		Pessoa p1 = new Pessoa("Lucas", "Lima", "lucas@gmail.com", "M");
+		Pessoa p2 = new Pessoa("Ana", "Carolina", "ana@gmail.com", "F");
 
 		// criando instância da classe Cliente
-		Cliente c1 = new Cliente(p1, "C1");
+		Cliente c1 = new Cliente(p1);
 
 		// criando as instâncias da classe Funcionario
-		Funcionario f1 = new Funcionario(p2, "F1");
+		Funcionario f1 = new Funcionario(p2);
 
 		// criando instância da classe Serviço
-		Servico s1 = new Servico("Pintura", 50.0, 5, 6, "S1");
+		Servico s1 = new Servico("Pintura", 50.0, 5, 6);
 
 		// instanciando a classe Contrato
 		Contrato contrato1 = new Contrato(c1, f1, s1);

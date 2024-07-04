@@ -1,17 +1,17 @@
 package modelo;
 
-public class Pessoas {
+public class Pessoa {
 	private String nome, sobrenome, email, sexo;
 	
 	//construtor
-	public Pessoas(String nome, String sobrenome, String email, String sexo) {
+	public Pessoa(String nome, String sobrenome, String email, String sexo) {
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.email = email;
 		this.sexo = sexo;
 	}
 	
-	public Pessoas(Pessoas pessoas) {
+	public Pessoa(Pessoa pessoas) {
 		this.nome = pessoas.nome;
 		this.sobrenome = pessoas.sobrenome;
 		this.email = pessoas.email;

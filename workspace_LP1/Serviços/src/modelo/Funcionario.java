@@ -1,32 +1,41 @@
 package modelo;
 
-public class Funcionario{
-	//composição
-	private Pessoas funcionario;
-	
+public class Funcionario {
+
+	private static int num_sequencial = 0;
+	private static String letra_codigo = "F";
+
+	// composição
+	private Pessoa funcionario;
+
 	private String codigo;
 
-	//construtor
-	public Funcionario(Pessoas funcionario, String codigo) {
-		this.codigo = codigo;
+	// construtor
+	public Funcionario(Pessoa funcionario) {
 		this.funcionario = funcionario;
+		this.codigo = gerarCodigo();
 	}
-	
+
+	private String gerarCodigo() {
+		Funcionario.num_sequencial++;
+
+		return letra_codigo + num_sequencial;
+	}
+
 	public String toString() {
-		
-		return "Nome: " + funcionario.getNome() + "\nSobrenome: " + 
-				funcionario.getSobrenome() + "\nEmail: "+ getFuncionario().getEmail()+ 
-				"\nSexo: " + getFuncionario().getSexo() + "\nCódigo: " + getCodigo()+
-				"\n-----------------";
+
+		return "Nome: " + funcionario.getNome() + "\nSobrenome: " + funcionario.getSobrenome() + "\nEmail: "
+				+ getFuncionario().getEmail() + "\nSexo: " + getFuncionario().getSexo() + "\nCódigo: " + getCodigo()
+				+ "\n-----------------";
 	}
-	
-	//getter
+
+	// getter
 	public String getCodigo() {
 		return codigo;
 	}
-	
-	public Pessoas getFuncionario() {
-		//objeto encapsulado
-		return new Pessoas(funcionario);
+
+	public Pessoa getFuncionario() {
+		// objeto encapsulado
+		return new Pessoa(funcionario);
 	}
 }
