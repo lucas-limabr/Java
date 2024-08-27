@@ -23,6 +23,15 @@ public class Clientes {
 		
 		return "Senhora "+this.nome;
 	}
+	
+	public Clientes(Clientes c)
+	{
+		this.codigo = c.codigo;
+		this.email = c.email;
+		this.nome = c.nome;
+		this.sexo = c.sexo;
+		this.telefone = c.telefone;
+	}
 
 	public int getCodigo() {
 		return codigo;

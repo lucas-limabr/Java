@@ -1,7 +1,5 @@
 package modelo;
 import java.util.ArrayList;
-import java.util.List;
-
 
 public class Banco {
 	private ArrayList<Conta> listaContas = new ArrayList<>();
@@ -32,17 +30,12 @@ public class Banco {
 	}
 
 	public ArrayList<Conta> getListaContas() {
-		//declarei o arrayList que será a cópia do original
-		ArrayList<Conta> copia_lista = new ArrayList<Conta>();
+		ArrayList<Conta> lista_copia = new ArrayList<>();
 		
-		//for para varrer cada objeto do tipo Conta do meu arrayList original
-//		for(Conta item : listaContas) {
-//			//para cada objeto eu dou um new (garanto endereço de memória 
-//			//exclusivo para cada objeto Conta, diferente do original) chamando o construtor da classe
-//			//do objeto e passando os objetos do arrayList um por um. Após, adiciono na cópia 
-//			copia_lista.add(new Conta(item));
-//		}
+		for(Conta item : listaContas) {
+			lista_copia.add(item.encapsulaContas(item));
+		}
 		
-		return copia_lista;
+		return lista_copia;
 	}
 }

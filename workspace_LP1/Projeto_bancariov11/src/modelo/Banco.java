@@ -32,9 +32,12 @@ public class Banco {
 	}
 
 	public ArrayList<Conta> getListaContas() {
+		ArrayList<Conta> copia_lista = new ArrayList<>();
 		
-				
-		return (ArrayList<Conta>) listaContas.clone();
+		for(Conta item : listaContas) {
+			copia_lista.add(item.encapsulaContas(item));
+		}
 		
+		return copia_lista;
 	}
 }

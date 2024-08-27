@@ -22,13 +22,13 @@ public abstract class Conta {
 		this.numero = gerarNumero();
 		this.cliente = cliente;
 	}
-
-	public Conta(Conta conta) {
-		this.numero = conta.numero;
-		this.cliente = conta.cliente;
-		this.saldo = conta.saldo;
+	
+	public Conta(Conta c) {
+		this.cliente = c.cliente;
+		this.numero = c.numero;
+		this.saldo = c.saldo;
 	}
-
+	
 	// métodos
 	public boolean deposita(double valor) {
 		if (valor > 0) {
@@ -66,13 +66,15 @@ public abstract class Conta {
 	}
 	
 	public abstract String getIdentificacao();
+	
+	public abstract Conta encapsulaContas(Conta c);
 
 	public String getNumero() {
 		return numero;
 	}
 
 	public Clientes getCliente() {
-		return cliente;
+		return new Clientes(cliente);
 	}
 
 	public double getSaldo() {

@@ -3,13 +3,17 @@ package modelo;
 public class ContaInvestimento extends Conta {
 
 	private double taxa;
-	private String identificacao;
+	private final String identificacao = "Conta Investimento";
 
 	public ContaInvestimento(Clientes cliente, double saldo, double taxa) {
 		super(cliente, saldo);
 		this.atualizaTaxa(taxa);
 	}
 	
+	public ContaInvestimento(Conta c) {
+		super(c);
+	}
+
 	public void atualizaSaldo()
 	{
 		this.setSaldo(this.getSaldo() * (taxa + 100)/100);
@@ -28,7 +32,19 @@ public class ContaInvestimento extends Conta {
 
 	@Override
 	public String getIdentificacao() {
-		this.identificacao = "Conta Investimento";
 		return identificacao;
+	}
+
+	@Override
+	public Conta encapsulaContas(Conta c) {
+		return new ContaInvestimento(c);
+	}
+
+	public double getTaxa() {
+		return taxa;
+	}
+
+	public void setTaxa(double taxa) {
+		this.taxa = taxa;
 	}
 }

@@ -28,6 +28,8 @@ public abstract class Conta {
 		this.cliente = conta.cliente;
 		this.saldo = conta.saldo;
 	}
+	
+	public abstract Conta encapsulaContas(Conta c);
 
 	// métodos
 	public boolean deposita(double valor) {
@@ -40,7 +42,7 @@ public abstract class Conta {
 
 	public boolean saca(double valor) throws SaldoIndisponivel {
 		if(valor > saldo) {
-			throw new SaldoIndisponivel("Um saque inválido foi registrado!", this);
+			throw new SaldoIndisponivel("Um saque inválido foi registrado!", this.getIdentificacao());
 		}
 		
 		this.saldo = this.saldo - valor;

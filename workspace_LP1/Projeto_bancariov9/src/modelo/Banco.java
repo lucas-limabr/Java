@@ -10,7 +10,7 @@ public class Banco {
 		this.listaContas.add(c);		
 		return true;
 	}
-
+	
 	public Conta getConta(String n) {
 		for (Conta conta : listaContas) {
 			if (conta.getNumero().equals(n)) {
