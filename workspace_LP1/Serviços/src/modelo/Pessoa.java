@@ -1,24 +1,24 @@
 package modelo;
 
-public class Pessoa {
+public abstract class Pessoa {
 	private String nome, sobrenome, email, sexo;
-	
-	//construtor
+
+	// construtor
 	public Pessoa(String nome, String sobrenome, String email, String sexo) {
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.email = email;
 		this.sexo = sexo;
 	}
-	
+
 	public Pessoa(Pessoa pessoas) {
 		this.nome = pessoas.nome;
 		this.sobrenome = pessoas.sobrenome;
 		this.email = pessoas.email;
 		this.sexo = pessoas.sexo;
 	}
-	
-	//métodos getters
+
+	// métodos getters
 	public String getNome() {
 		return nome;
 	}
@@ -35,7 +35,7 @@ public class Pessoa {
 		return sexo;
 	}
 
-	//métodos setters
+	// métodos setters
 	public void setNome(String nome) {
 		this.nome = nome;
 	}

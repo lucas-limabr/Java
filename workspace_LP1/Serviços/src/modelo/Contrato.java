@@ -50,8 +50,8 @@ public class Contrato{
 	public String toString(){
 		return "Número da ordem do contrato: "+getNum_ordem()+"\nAno de início: "+
 				getAno_inicio()+"\nMês de início: "+getMes_inicio()+"\nNome do cliente: "+
-				cliente.getCliente().getNome()+"\nNome do funcionário: "+
-				funcionario.getFuncionario().getNome()+"\nDescrição do serviço: "+
+				cliente.getNome() +"\nNome do funcionário: "+
+				funcionario.getNome() +"\nDescrição do serviço: "+
 				servico.getDescricao()+"\n-----------------";
 	}
 	

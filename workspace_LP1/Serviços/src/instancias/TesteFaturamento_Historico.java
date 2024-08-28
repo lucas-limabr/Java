@@ -1,5 +1,6 @@
 package instancias;
 
+import modelo.Assalariado;
 import modelo.Cliente;
 import modelo.Contrato;
 import modelo.Funcionario;
@@ -11,29 +12,18 @@ public class TesteFaturamento_Historico {
 
 	public static void main(String[] args) {
 
-		// criando as instâncias da classe Pessoas
-		Pessoa p1 = new Pessoa("Lucas", "Lima", "lucas@gmail.com", "M");
-		Pessoa p2 = new Pessoa("Ana", "Carolina", "ana@gmail.com", "F");
-		Pessoa p6 = new Pessoa("Tião", "Almeida", "tiao@gmail.com", "M");
-		Pessoa p7 = new Pessoa("Rodrigo", "Guedes", "rodrigo@gmail.com", "M");
-
-		// criando as instâncias da classe Cliente
-		Cliente c1 = new Cliente(p1);
-		Cliente c2 = new Cliente(p2);
-
-		// criando as instâncias da classe Funcionario
-		Funcionario f1 = new Funcionario(p6);
-		Funcionario f2 = new Funcionario(p7);
-
-		// criando as instâncias da classe Serviço
+		Cliente c1 =  new Cliente("Tião", "Almeida", "tiao@gmail.com", "M");
+		Cliente c2 = new Cliente("Rodrigo", "Guedes", "rodrigo@gmail.com", "M");
+		
+		Assalariado f1 = new Assalariado("Caio", "Junior", "caio@gmail.com", "M", 1500);
+		Assalariado f2 = new Assalariado("Julia", "Lima", "julia@gmail.com", "F", 1700);
+		
 		Servico s1 = new Servico("Pintura", 50.0, 5, 6);
 		Servico s2 = new Servico("Encanamento", 70.0, 3, 4);
 
-		// instanciando a classe Contrato
 		Contrato contrato1 = new Contrato(c1, f1, s1);
 		Contrato contrato2 = new Contrato(c2, f2, s2);
 
-		// instanciando a classe Historico
 		Historico historico = new Historico();
 
 		// add contratos no Historico
@@ -71,5 +61,4 @@ public class TesteFaturamento_Historico {
 			System.out.println("R$ " + item.getServico().valorPago());
 		}
 	}
-
 }

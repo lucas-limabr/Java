@@ -2,70 +2,46 @@ package instancias;
 
 import java.util.ArrayList;
 
+import modelo.Assalariado;
 import modelo.Cliente;
 import modelo.Contrato;
 import modelo.Funcionario;
 import modelo.Historico;
-import modelo.Pessoa;
 import modelo.Servico;
 
 public class TesteEncapsulamento {
 
 	public static void main(String[] args) {
 
-		// criando instâncias da classe Pessoas
-		Pessoa p1 = new Pessoa("Lucas", "Lima", "lucas@gmail.com", "M");
-		Pessoa p2 = new Pessoa("Ana", "Carolina", "ana@gmail.com", "F");
+		Cliente c1 = new Cliente("Ana", "Carolina", "ana@gmail.com", "F");
 
-		// criando instância da classe Cliente
-		Cliente c1 = new Cliente(p1);
+		Assalariado f1 = new Assalariado("Lucas", "Lima", "lucas@gmail.com", "M", 1500);
 
-		// criando instância da classe Servico
 		Servico s1 = new Servico("Pintura", 50.0, 5, 6);
 
 		System.out.println("Todos os objetos, sem exceção, foram encapsulados" + " com sucesso, confira!");
-
-		// criando uma cópia que recebe um objeto da classe Pessoas
-		Pessoa copia = c1.getCliente();
-
-		// alterei na cópia
-		copia.setNome("Vini");
-
-		// não se refletiu no objeto original
-		System.out.println(c1.getCliente().getNome());
-		System.out.println("---------");
-
-		// criando instância da classe Funcionário
-		Funcionario f1 = new Funcionario(p2);
-
-		// criando uma cópia que recebe um objeto da classe Pessoas
-		Pessoa copia2 = f1.getFuncionario();
-
-		copia2.setNome("Jorge");
-		System.out.println(f1.getFuncionario().getNome());
-		System.out.println("---------");
 
 		// criando instância da classe Contrato
 		Contrato contrato1 = new Contrato(c1, f1, s1);
 
 		// criando uma cópia que recebe um objeto da classe Cliente
-		Cliente copia3 = contrato1.getCliente();
+		Cliente copia1 = contrato1.getCliente();
 
-		copia3.getCliente().setNome("Gustavo");
-		System.out.println(contrato1.getCliente().getCliente().getNome());
+		copia1.setNome("Gustavo");
+		System.out.println(contrato1.getCliente().getNome());
 		System.out.println("---------");
 
 		// criando uma cópia que recebe um objeto da classe Funcionario
-		Funcionario copia4 = contrato1.getFuncionario();
+		Funcionario copia2 = contrato1.getFuncionario();
 
-		copia4.getFuncionario().setNome("Zezinho");
-		System.out.println(contrato1.getFuncionario().getFuncionario().getNome());
+		copia2.setNome("Zezinho");
+		System.out.println(contrato1.getFuncionario().getNome());
 		System.out.println("---------");
 
 		// criando uma cópia que recebe um objeto da classe Serviço
-		Servico copia5 = contrato1.getServico();
+		Servico copia3 = contrato1.getServico();
 
-		copia5.setDescricao("Tentando alterar descrição");
+		copia3.setDescricao("Tentando alterar descrição");
 		System.out.println(contrato1.getServico().getDescricao());
 		System.out.println("---------");
 

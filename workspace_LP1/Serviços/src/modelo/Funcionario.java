@@ -1,18 +1,16 @@
 package modelo;
 
-public class Funcionario {
+public abstract class Funcionario extends Pessoa implements Saudacao {
 
 	private static int num_sequencial = 0;
 	private static String letra_codigo = "F";
-
-	// composição
-	private Pessoa funcionario;
-
+	private String msg;
+	
 	private String codigo;
 
 	// construtor
-	public Funcionario(Pessoa funcionario) {
-		this.funcionario = funcionario;
+	public Funcionario(String nome, String sobrenome, String email, String sexo) {
+		super(nome, sobrenome, email, sexo);
 		this.codigo = gerarCodigo();
 	}
 
@@ -24,8 +22,8 @@ public class Funcionario {
 
 	public String toString() {
 
-		return "Nome: " + funcionario.getNome() + "\nSobrenome: " + funcionario.getSobrenome() + "\nEmail: "
-				+ getFuncionario().getEmail() + "\nSexo: " + getFuncionario().getSexo() + "\nCódigo: " + getCodigo()
+		return "Nome: " + super.getNome() + "\nSobrenome: " + super.getSobrenome() + "\nEmail: "
+				+ super.getEmail() + "\nSexo: " + super.getSexo() + "\nCódigo: " + getCodigo()
 				+ "\n-----------------";
 	}
 
@@ -33,9 +31,22 @@ public class Funcionario {
 	public String getCodigo() {
 		return codigo;
 	}
-
-	public Pessoa getFuncionario() {
-		// objeto encapsulado
-		return new Pessoa(funcionario);
+	
+	public abstract double calculaSalario();
+	
+	@Override
+	public String saudacao() {
+		
+		if(super.getSexo() == "M" || super.getSexo() == "m")
+		{
+			msg = "Prezado Senhor "
+;		}
+		else  {
+			msg = "Prezada Senhora ";
+		}
+		
+		return msg + super.getNome() + super.getSobrenome();
 	}
+	
+	public abstract String getFuncionario();
 }
