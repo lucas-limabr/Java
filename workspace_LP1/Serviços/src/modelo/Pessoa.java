@@ -10,12 +10,12 @@ public abstract class Pessoa {
 		this.email = email;
 		this.sexo = sexo;
 	}
-
-	public Pessoa(Pessoa pessoas) {
-		this.nome = pessoas.nome;
-		this.sobrenome = pessoas.sobrenome;
-		this.email = pessoas.email;
-		this.sexo = pessoas.sexo;
+	
+	public Pessoa(Pessoa pessoa) {
+		this.nome = pessoa.nome;
+		this.sobrenome = pessoa.sobrenome;
+		this.email = pessoa.email;
+		this.sexo = pessoa.sexo;
 	}
 
 	// métodos getters

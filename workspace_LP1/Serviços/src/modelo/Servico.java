@@ -1,5 +1,9 @@
 package modelo;
 
+import java.math.BigDecimal;
+
+import excecao.LimiteHoras;
+
 public class Servico {
 
 	private static int num_sequencial = 0;
@@ -12,8 +16,17 @@ public class Servico {
 	private String codigo;
 
 	// construtor
-	public Servico(String descricao, double valor_hora, double horas_previstas, double horas_trabalhadas) {
-
+	public Servico(String descricao, double valor_hora, double horas_previstas, double horas_trabalhadas) throws LimiteHoras {
+		
+		if(horas_previstas > 2400) {
+			throw new LimiteHoras("Erro! Não é permitido que as horas previstas de um serviço"+
+		" exceda 2400 horas");
+		}
+		if(horas_trabalhadas > 2400) {
+			throw new LimiteHoras("Erro! Não é permitido que as horas trabalhadas de um serviço"+
+					" exceda 2400 horas");
+		}
+		
 		this.descricao = descricao;
 		this.valor_hora = valor_hora;
 		this.horas_previstas = horas_previstas;
@@ -39,6 +52,7 @@ public class Servico {
 	public double calculaOrcamento() {
 
 		double valor_orcamento = valor_hora * horas_previstas;
+		
 		return valor_orcamento;
 	}
 
@@ -50,9 +64,8 @@ public class Servico {
 
 	public String toString() {
 
-		return "Código: "+getCodigo()+ " Descrição: " + getDescricao() + "\nValor da hora: " + getValor_hora() + "\nHoras previstas do serviço: "
-				+ getHoras_previstas() + "\nHoras efetivamente trabalhadas: " + getHoras_trabalhadas()
-				+ "\n-----------------";
+		return "\n----------\nCódigo: "+getCodigo()+ " \nDescrição: " + getDescricao() + "\nValor da hora: " + getValor_hora() + "\nHoras previstas do serviço: "
+				+ getHoras_previstas() + "\nHoras efetivamente trabalhadas: " + getHoras_trabalhadas();
 	}
 
 	// getters

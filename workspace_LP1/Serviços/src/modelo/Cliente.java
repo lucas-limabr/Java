@@ -1,16 +1,32 @@
 package modelo;
 
+import java.util.Objects;
+
 public class Cliente extends Pessoa implements Saudacao {
 
 	private static int num_sequencial = 0;
 	private static String letra_codigo = "C";
-	private String msg;
 	private String codigo;
+
+	// valor acumulado do total pago pelo cliente, considerando todos os serviços
+	// contratados
+	// por ele
+	private double valor_total_pago;
+	// total de serviços contratados pelo cliente
+	private int qtd_servicos;
 
 	// construtor
 	public Cliente(String nome, String sobrenome, String email, String sexo) {
 		super(nome, sobrenome, email, sexo);
 		this.codigo = gerarCodigo();
+	}
+
+	// assegurando o encapsulamento
+	public Cliente(Cliente cliente) {
+		super(cliente);
+		this.codigo = cliente.codigo;
+		this.valor_total_pago = cliente.valor_total_pago;
+		this.qtd_servicos = cliente.qtd_servicos;
 	}
 
 	private String gerarCodigo() {
@@ -21,9 +37,8 @@ public class Cliente extends Pessoa implements Saudacao {
 
 	public String toString() {
 
-		return "Nome: " + super.getNome() + "\nSobrenome: " + super.getSobrenome() + "\nEmail: "
-				+ super.getEmail() + "\nSexo: " + super.getSexo() + "\nCódigo: " + getCodigo()
-				+ "\n-----------------";
+		return "Nome: " + super.getNome() + "\nSobrenome: " + super.getSobrenome() + "\nEmail: " + super.getEmail()
+				+ "\nSexo: " + super.getSexo() + "\nCódigo: " + getCodigo() + "\n-----------------";
 	}
 
 	public String getCodigo() {
@@ -32,27 +47,50 @@ public class Cliente extends Pessoa implements Saudacao {
 
 	@Override
 	public String saudacao() {
-		
-		
-		if(super.getSexo() == "M" || super.getSexo() == "m")
-		{
-			msg = "Prezado Senhor "
-;		}
-		else  {
+		String msg = "";
+
+		if (super.getSexo().equalsIgnoreCase("M")) {
+			msg = "Prezado Senhor ";
+		} else if (super.getSexo().equalsIgnoreCase("F")) {
 			msg = "Prezada Senhora ";
 		}
-		
+
 		return msg + super.getSobrenome();
 	}
 
-	public String getMsg() {
-		return msg;
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigo);
 	}
 
-	public void setMsg(String msg) {
-		this.msg = msg;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+
+		Cliente cliente = (Cliente) obj;
+
+		return this.codigo.equals(cliente.codigo);
 	}
-	
-	//TESTANDO
-	
+
+	public double getValor_total_pago() {
+		return valor_total_pago;
+	}
+
+	public void setValor_total_pago(double valor_total_pago) {
+
+		this.valor_total_pago += valor_total_pago;
+	}
+
+	public int getQtd_servicos() {
+		return qtd_servicos;
+	}
+
+	public void incrementaQtd_servicos() {
+		this.qtd_servicos += 1;
+	}
 }

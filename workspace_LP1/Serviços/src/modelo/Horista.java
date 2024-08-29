@@ -2,24 +2,29 @@ package modelo;
 
 public class Horista extends Funcionario {
 
-	//composição
-	private Servico servico;
-	
-	public Horista(String nome, String sobrenome, String email, String sexo, Servico s) {
+	public Horista(String nome, String sobrenome, String email, String sexo) {
 		super(nome, sobrenome, email, sexo);
-		this.servico = s;
+	}
+	
+	public Horista(Horista horista) {
+		super(horista);
 	}
 
 	@Override
-	public double calculaSalario() {
-		// TODO Auto-generated method stub
-		return 0;
+	public double calculaSalario(Servico servico) {
+		
+		return servico.valorPago();
 	}
 
 	@Override
 	public String getFuncionario() {
 		
 		return "Funcionário Horista";
+	}
+
+	@Override
+	public Funcionario fazCopia(Funcionario f) {
+		return new Horista((Horista) f);
 	}
 
 }

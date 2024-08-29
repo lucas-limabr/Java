@@ -4,24 +4,30 @@ public class Comissionado extends Funcionario {
 
 	private double comissao;
 	
-	//composição
-	private Servico servico;
-	
-	public Comissionado(String nome, String sobrenome, String email, String sexo, double comissao, Servico s) {
+	public Comissionado(String nome, String sobrenome, String email, String sexo, double comissao) {
 		super(nome, sobrenome, email, sexo);
 		this.comissao = comissao;
-		this.servico = s;
+	}
+	
+	public Comissionado(Comissionado comissionado) {
+		super(comissionado);
+		this.comissao = comissionado.comissao;
 	}
 
 	@Override
-	public double calculaSalario() {
-		// TODO Auto-generated method stub
-		return 0;
+	public double calculaSalario(Servico servico) {
+		
+		return servico.valorPago() * (comissao / 100);
 	}
 
 	@Override
 	public String getFuncionario() {
 		return "Funcionário Comissionado";
+	}
+
+	@Override
+	public Funcionario fazCopia(Funcionario f) {
+		return new Comissionado((Comissionado)f);
 	}
 
 }

@@ -16,10 +16,11 @@ public abstract class Ranking {
 		} else if (saldo >= 10.000) {
 			ranking.put(codigo, "B");
 			return true;
-		} else {
+		} else if (saldo > 0) {
 			ranking.put(codigo, "C");
 			return true;
 		}
+		return false;
 	}
 
 	public static String getCategoria(Integer codigo) {

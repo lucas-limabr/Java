@@ -1,11 +1,11 @@
 package modelo;
 
+import java.math.BigDecimal;
+
 public abstract class Funcionario extends Pessoa implements Saudacao {
 
 	private static int num_sequencial = 0;
 	private static String letra_codigo = "F";
-	private String msg;
-	
 	private String codigo;
 
 	// construtor
@@ -13,6 +13,18 @@ public abstract class Funcionario extends Pessoa implements Saudacao {
 		super(nome, sobrenome, email, sexo);
 		this.codigo = gerarCodigo();
 	}
+	
+	//assegurando o encapsulamento
+	public Funcionario(Funcionario funcionario) {
+		super(funcionario);
+		this.codigo = funcionario.codigo;
+	}
+	
+	public abstract Funcionario fazCopia(Funcionario f);
+	
+	public abstract double calculaSalario(Servico servico);
+	
+	public abstract String getFuncionario();
 
 	private String gerarCodigo() {
 		Funcionario.num_sequencial++;
@@ -32,21 +44,18 @@ public abstract class Funcionario extends Pessoa implements Saudacao {
 		return codigo;
 	}
 	
-	public abstract double calculaSalario();
-	
 	@Override
 	public String saudacao() {
+		String msg = "";
 		
-		if(super.getSexo() == "M" || super.getSexo() == "m")
+		if(super.getSexo().equalsIgnoreCase("M"))
 		{
 			msg = "Prezado Senhor "
 ;		}
-		else  {
+		else if(super.getSexo().equalsIgnoreCase("F"))  {
 			msg = "Prezada Senhora ";
 		}
 		
-		return msg + super.getNome() + super.getSobrenome();
+		return msg + super.getNome() +" "+ super.getSobrenome();
 	}
-	
-	public abstract String getFuncionario();
 }

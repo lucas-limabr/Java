@@ -15,8 +15,8 @@ public class TesteFaturamento_Historico {
 		Cliente c1 =  new Cliente("Tião", "Almeida", "tiao@gmail.com", "M");
 		Cliente c2 = new Cliente("Rodrigo", "Guedes", "rodrigo@gmail.com", "M");
 		
-		Assalariado f1 = new Assalariado("Caio", "Junior", "caio@gmail.com", "M", 1500);
-		Assalariado f2 = new Assalariado("Julia", "Lima", "julia@gmail.com", "F", 1700);
+		Assalariado f1 = new Assalariado("Caio", "Junior", "caio@gmail.com", "M", 1500.0);
+		Assalariado f2 = new Assalariado("Julia", "Lima", "julia@gmail.com", "F", 1700.0);
 		
 		Servico s1 = new Servico("Pintura", 50.0, 5, 6);
 		Servico s2 = new Servico("Encanamento", 70.0, 3, 4);

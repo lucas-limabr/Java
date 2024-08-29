@@ -15,7 +15,7 @@ public class TesteEncapsulamento {
 
 		Cliente c1 = new Cliente("Ana", "Carolina", "ana@gmail.com", "F");
 
-		Assalariado f1 = new Assalariado("Lucas", "Lima", "lucas@gmail.com", "M", 1500);
+		Assalariado f1 = new Assalariado("Lucas", "Lima", "lucas@gmail.com", "M", 1500.0);
 
 		Servico s1 = new Servico("Pintura", 50.0, 5, 6);
 

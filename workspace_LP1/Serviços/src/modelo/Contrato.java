@@ -24,6 +24,9 @@ public class Contrato{
 		this.ano_inicio = LocalDate.now().getYear();
 		this.mes_inicio = LocalDate.now().getMonthValue();
 		this.num_ordem = gerarNumero();
+		cliente.incrementaQtd_servicos();
+		cliente.setValor_total_pago(servico.valorPago());
+		Ranking.categorizar(cliente);
 	}
 	
 	public Contrato(Contrato contrato) {
@@ -47,12 +50,16 @@ public class Contrato{
 		return data_atual.getYear() + "-"+ num_sequencial;
 	}
 	
+	public double consultaSalario() {
+		return funcionario.calculaSalario(servico);
+	}
+	
 	public String toString(){
-		return "Número da ordem do contrato: "+getNum_ordem()+"\nAno de início: "+
+		return "\n----------\nNúmero da ordem do contrato: "+getNum_ordem()+"\nAno de início: "+
 				getAno_inicio()+"\nMês de início: "+getMes_inicio()+"\nNome do cliente: "+
 				cliente.getNome() +"\nNome do funcionário: "+
 				funcionario.getNome() +"\nDescrição do serviço: "+
-				servico.getDescricao()+"\n-----------------";
+				servico.getDescricao();
 	}
 	
 	//getters
@@ -69,13 +76,11 @@ public class Contrato{
 		}
 
 		public Cliente getCliente() {
-			//objeto encapsulado na classe Cliente
-			return cliente;
+			return new Cliente(cliente);
 		}
 
 		public Funcionario getFuncionario() {
-			//objeto encapsulado na classe Funcionario
-			return funcionario;
+			return this.funcionario.fazCopia(funcionario);
 		}
 
 		public Servico getServico() {
