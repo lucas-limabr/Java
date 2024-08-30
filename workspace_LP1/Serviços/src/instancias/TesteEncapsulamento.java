@@ -7,7 +7,7 @@ import modelo.Assalariado;
 import modelo.Cliente;
 import modelo.Contrato;
 import modelo.Funcionario;
-import modelo.Historico;
+import modelo.HistoricoContratos;
 import modelo.Servico;
 
 public class TesteEncapsulamento {
@@ -48,7 +48,7 @@ public class TesteEncapsulamento {
 			System.out.println("---------");
 			
 			// criando instância da classe Historico
-			Historico historico = new Historico();
+			HistoricoContratos historico = new HistoricoContratos();
 			historico.addContrato(contrato1);
 			
 			// criando uma cópia que recebe um ArrayList de objetos da classe Contrato

@@ -6,7 +6,7 @@ import modelo.Cliente;
 import modelo.Comissionado;
 import modelo.Contrato;
 import modelo.Funcionario;
-import modelo.Historico;
+import modelo.HistoricoContratos;
 
 import modelo.Servico;
 
@@ -21,7 +21,7 @@ public class TesteCRUD_Contrato {
 		Funcionario f1 = new Assalariado("Gabriela", "Rezende", "gabriela@gmail.com", "F", 1500.0);
 		Funcionario f2 = new Comissionado("Pedro", "Augusto", "pedro@gmail.com", "M", 800);
 
-		Historico historico = new Historico();
+		HistoricoContratos historico = new HistoricoContratos();
 
 		Servico s1;
 		try {
@@ -43,7 +43,6 @@ public class TesteCRUD_Contrato {
 			}
 
 			// testando o método informacoes da classe Historico
-			System.out.println("\n-----------------");
 			historico.informacoes(contrato1);
 
 			System.out.println("\n-----------------");
@@ -75,7 +74,6 @@ public class TesteCRUD_Contrato {
 		}
 
 		// testando o método buscaContrato da classe Historico
-		System.out.println("\n-----------------");
 		String num_ordem = "2024-2";
 		Contrato contrato_pesquisado = historico.buscaContrato(num_ordem);
 		if (contrato_pesquisado == null) {

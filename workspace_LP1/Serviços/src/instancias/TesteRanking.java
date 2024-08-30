@@ -6,7 +6,7 @@ import modelo.Cliente;
 import modelo.Comissionado;
 import modelo.Contrato;
 import modelo.Funcionario;
-import modelo.Historico;
+import modelo.HistoricoContratos;
 import modelo.Ranking;
 import modelo.Servico;
 
@@ -20,7 +20,7 @@ public class TesteRanking {
 		Funcionario f1 = new Assalariado("Gabriela", "Rezende", "gabriela@gmail.com", "F", 1500.0);
 		Funcionario f2 = new Comissionado("Pedro", "Augusto", "pedro@gmail.com", "M", 800);
 		
-		Historico historico = new Historico();
+		HistoricoContratos historico = new HistoricoContratos();
 		
 		try {
 			Servico s1 = new Servico("Pintura", 50.0, 5, 6);

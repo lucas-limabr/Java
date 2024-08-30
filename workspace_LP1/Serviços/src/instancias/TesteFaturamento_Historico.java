@@ -4,7 +4,7 @@ import excecao.LimiteHoras;
 import modelo.Assalariado;
 import modelo.Cliente;
 import modelo.Contrato;
-import modelo.Historico;
+import modelo.HistoricoContratos;
 import modelo.Servico;
 
 public class TesteFaturamento_Historico {
@@ -17,7 +17,7 @@ public class TesteFaturamento_Historico {
 		Assalariado f1 = new Assalariado("Caio", "Junior", "caio@gmail.com", "M", 1500.0);
 		Assalariado f2 = new Assalariado("Julia", "Lima", "julia@gmail.com", "F", 1700.0);
 
-		Historico historico = new Historico();
+		HistoricoContratos historico = new HistoricoContratos();
 
 		Servico s1;
 		try {

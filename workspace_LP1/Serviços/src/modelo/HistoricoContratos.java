@@ -2,19 +2,22 @@ package modelo;
 
 import java.util.ArrayList;
 
-public class Historico {
+public class HistoricoContratos {
 
 	// composição
 	private ArrayList<Contrato> lista_contratos = new ArrayList<Contrato>();
 
-	public void informacoes(Contrato contrato) {
+	public String informacoes(Contrato contrato) {
+		String msg_formatada = new String();
+
 		if (lista_contratos.contains(contrato)) {
-			System.out.println("Número da ordem do contrato: " + contrato.getNum_ordem());
-			System.out.println("Ano de início: " + contrato.getAno_inicio());
-			System.out.println("Mês de início: " + contrato.getMes_inicio());
+			msg_formatada = "\n-------\nNúmero da ordem do contrato: " + contrato.getNum_ordem() + "\nAno de início: "
+					+ contrato.getAno_inicio() + "\nMês de início: " + contrato.getMes_inicio();
 		} else {
-			System.out.println("Este contrato não existe");
+			msg_formatada = "Este contrato não existe";
 		}
+
+		return msg_formatada;
 	}
 
 	public double faturamentoTotPrevisto() {
