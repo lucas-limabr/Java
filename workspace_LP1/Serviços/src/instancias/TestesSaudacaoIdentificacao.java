@@ -5,7 +5,6 @@ import modelo.Cliente;
 import modelo.Comissionado;
 import modelo.Horista;
 import modelo.IdentificadorFuncionario;
-import modelo.Servico;
 
 public class TestesSaudacaoIdentificacao {
 

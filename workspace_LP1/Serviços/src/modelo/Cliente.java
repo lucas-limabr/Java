@@ -37,8 +37,8 @@ public class Cliente extends Pessoa implements Saudacao {
 
 	public String toString() {
 
-		return "Nome: " + super.getNome() + "\nSobrenome: " + super.getSobrenome() + "\nEmail: " + super.getEmail()
-				+ "\nSexo: " + super.getSexo() + "\nCódigo: " + getCodigo() + "\n-----------------";
+		return "\n----------\nNome: " + super.getNome() + "\nSobrenome: " + super.getSobrenome() + "\nEmail: "
+				+ super.getEmail() + "\nSexo: " + super.getSexo() + "\nCódigo: " + getCodigo();
 	}
 
 	public String getCodigo() {

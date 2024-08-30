@@ -73,7 +73,7 @@ public class TesteRanking {
 		
 		System.out.println("-----");
 		for(Cliente item : Ranking.getKeys()) {
-			System.out.println("Cliente "+item.getNome()+": Valor "+Ranking.getCategoria(item));
+			System.out.println("Cliente "+item.getNome()+": Categoria "+Ranking.getCategoria(item));
 		}
 	}
 

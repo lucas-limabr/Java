@@ -7,8 +7,7 @@ import modelo.Comissionado;
 import modelo.Contrato;
 import modelo.Funcionario;
 import modelo.Historico;
-import modelo.Horista;
-import modelo.Pessoa;
+
 import modelo.Servico;
 
 public class TesteCRUD_Contrato {

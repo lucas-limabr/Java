@@ -2,21 +2,21 @@ package modelo;
 
 import java.time.LocalDate;
 
-public class Contrato{
-	
+public class Contrato {
+
 	private static LocalDate data_atual = LocalDate.of(2023, 04, 03);
 	private static int num_sequencial;
-	
+
 	private String num_ordem;
 	private int ano_inicio;
 	private int mes_inicio;
-	
-	//composição
+
+	// composição
 	private Cliente cliente;
 	private Funcionario funcionario;
 	private Servico servico;
-	
-	//construtor
+
+	// construtor
 	public Contrato(Cliente cliente, Funcionario funcionario, Servico servico) {
 		this.cliente = cliente;
 		this.funcionario = funcionario;
@@ -28,7 +28,7 @@ public class Contrato{
 		cliente.setValor_total_pago(servico.valorPago());
 		Ranking.categorizar(cliente);
 	}
-	
+
 	public Contrato(Contrato contrato) {
 		this.cliente = contrato.cliente;
 		this.funcionario = contrato.funcionario;
@@ -37,59 +37,58 @@ public class Contrato{
 		this.mes_inicio = contrato.mes_inicio;
 		this.num_ordem = contrato.num_ordem;
 	}
-	
-	//método para gerar um número de ordem de contrato
+
+	// método para gerar um número de ordem de contrato
 	private String gerarNumero() {
-		if(data_atual.getYear() != LocalDate.now().getYear()) {
+		if (data_atual.getYear() != LocalDate.now().getYear()) {
 			Contrato.num_sequencial = 0;
 			data_atual = LocalDate.now();
 		}
-		
+
 		Contrato.num_sequencial++;
-		
-		return data_atual.getYear() + "-"+ num_sequencial;
+
+		return data_atual.getYear() + "-" + num_sequencial;
 	}
-	
+
 	public double consultaSalario() {
 		return funcionario.calculaSalario(servico);
 	}
-	
-	public String toString(){
-		return "\n----------\nNúmero da ordem do contrato: "+getNum_ordem()+"\nAno de início: "+
-				getAno_inicio()+"\nMês de início: "+getMes_inicio()+"\nNome do cliente: "+
-				cliente.getNome() +"\nNome do funcionário: "+
-				funcionario.getNome() +"\nDescrição do serviço: "+
-				servico.getDescricao();
+
+	public String toString() {
+		return "\n----------\nNúmero da ordem do contrato: " + getNum_ordem() + "\nAno de início: " + getAno_inicio()
+				+ "\nMês de início: " + getMes_inicio() + "\nNome do cliente: " + cliente.getNome()
+				+ "\nNome do funcionário: " + funcionario.getNome() + "\nDescrição do serviço: "
+				+ servico.getDescricao();
 	}
-	
-	//getters
-		public String getNum_ordem() {
-			return num_ordem;
-		}
 
-		public int getAno_inicio() {
-			return ano_inicio;
-		}
+	// getters
+	public String getNum_ordem() {
+		return num_ordem;
+	}
 
-		public int getMes_inicio() {
-			return mes_inicio;
-		}
+	public int getAno_inicio() {
+		return ano_inicio;
+	}
 
-		public Cliente getCliente() {
-			return new Cliente(cliente);
-		}
+	public int getMes_inicio() {
+		return mes_inicio;
+	}
 
-		public Funcionario getFuncionario() {
-			return this.funcionario.fazCopia(funcionario);
-		}
+	public Cliente getCliente() {
+		return new Cliente(cliente);
+	}
 
-		public Servico getServico() {
-			//objeto encapsulado
-			return new Servico(servico);
-		}
+	public Funcionario getFuncionario() {
+		return this.funcionario.fazCopia(funcionario);
+	}
 
-		//setters
-		public void setAno_inicio(int ano_inicio) {
-			this.ano_inicio = ano_inicio;
-		}
+	public Servico getServico() {
+		// objeto encapsulado
+		return new Servico(servico);
+	}
+
+	// setters
+	public void setAno_inicio(int ano_inicio) {
+		this.ano_inicio = ano_inicio;
+	}
 }

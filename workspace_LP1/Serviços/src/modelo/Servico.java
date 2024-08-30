@@ -1,7 +1,5 @@
 package modelo;
 
-import java.math.BigDecimal;
-
 import excecao.LimiteHoras;
 
 public class Servico {

@@ -1,7 +1,5 @@
 package modelo;
 
-import java.math.BigDecimal;
-
 public class Assalariado extends Funcionario {
 
 	private double salario;

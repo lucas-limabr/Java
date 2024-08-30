@@ -1,7 +1,5 @@
 package modelo;
 
-import java.math.BigDecimal;
-
 public abstract class Funcionario extends Pessoa implements Saudacao {
 
 	private static int num_sequencial = 0;

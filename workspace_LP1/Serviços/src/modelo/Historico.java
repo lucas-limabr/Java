@@ -1,34 +1,26 @@
 package modelo;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 public class Historico {
 
 	// composição
-	private Agrupamento<Contrato> lista_contratos = new Agrupamento<>();
-	
-	public String informacoes(Contrato contrato) {
-		
-		String msg_formatada = new String();
-		Contrato contrato_buscado = lista_contratos.busca(contrato);
-		
-		if(contrato_buscado == null) {
-			msg_formatada = "Este contrato não existe";
+	private ArrayList<Contrato> lista_contratos = new ArrayList<Contrato>();
+
+	public void informacoes(Contrato contrato) {
+		if (lista_contratos.contains(contrato)) {
+			System.out.println("Número da ordem do contrato: " + contrato.getNum_ordem());
+			System.out.println("Ano de início: " + contrato.getAno_inicio());
+			System.out.println("Mês de início: " + contrato.getMes_inicio());
+		} else {
+			System.out.println("Este contrato não existe");
 		}
-		else {
-			msg_formatada = contrato_buscado.toString(); 
-		}
-		
-		return msg_formatada;
 	}
-	
-	public double faturamentoTotPrevisto(Agrupamento<Contrato> lista) {
+
+	public double faturamentoTotPrevisto() {
 		double faturamento_previsto = 0.0;
 
-		
-		
-		for (Contrato item : lista) {
+		for (Contrato item : lista_contratos) {
 			faturamento_previsto += item.getServico().calculaOrcamento();
 		}
 
@@ -46,11 +38,19 @@ public class Historico {
 	}
 
 	public boolean addContrato(Contrato contrato) {
-		return lista_contratos.adiciona(contrato);
+		if (lista_contratos.contains(contrato)) {
+			return false;
+		} else {
+			return lista_contratos.add(contrato);
+		}
 	}
 
 	public boolean removeContrato(Contrato contrato) {
-		return lista_contratos.remove(contrato);
+		if (lista_contratos.remove(contrato)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public Contrato buscaContrato(String num_ordem) {
@@ -69,41 +69,41 @@ public class Historico {
 
 		for (Contrato item : lista_contratos) {
 			listagem += "\nCliente " + item.getCliente().getCodigo() + ": " + item.getCliente().getNome()
-					+ " -> Total de serviços contratados " + 
-					item.getCliente().getQtd_servicos()+" e valor total pago: R$"+item.getCliente().getValor_total_pago();
+					+ " -> Total de serviços contratados " + item.getCliente().getQtd_servicos()
+					+ " e valor total pago: R$" + item.getCliente().getValor_total_pago();
 		}
 		return listagem;
 	}
-	
+
 	public double valorTotPagoCliente(String codigo) {
-		int i  = 0;
-		
-		while(!(lista_contratos.get(i).getCliente().getCodigo().equals(codigo))) {
+		int i = 0;
+
+		while (!(lista_contratos.get(i).getCliente().getCodigo().equals(codigo))) {
 			i++;
 		}
-		
-		if(i != lista_contratos.size()) {
-			
+
+		if (i != lista_contratos.size()) {
+
 			return lista_contratos.get(i).getCliente().getValor_total_pago();
 		}
-		
+
 		return 0;
 	}
-	
+
 	public String consultarCategoriaCliente(String codigo) {
 		int i = 0;
-		
-		while(!(lista_contratos.get(i).getCliente().getCodigo().equals(codigo))) {
+
+		while (!(lista_contratos.get(i).getCliente().getCodigo().equals(codigo))) {
 			i++;
 		}
-		
-		if(i != lista_contratos.size()) {
+
+		if (i != lista_contratos.size()) {
 			return Ranking.getCategoria(lista_contratos.get(i).getCliente());
 		}
-		
+
 		return "";
 	}
-	
+
 	// getter
 	public ArrayList<Contrato> getLista_contratos() {
 
