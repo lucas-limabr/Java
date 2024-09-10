@@ -61,4 +61,14 @@ public class Agrupamento<E> {
 
 		return true;
 	}
+	
+	protected List<E> getLista() {
+		ArrayList<E> lista_copia = new ArrayList<>();
+		
+		for(E item : lista) {
+			lista_copia.add(item);
+		}
+		
+		return lista_copia;
+	}
 }

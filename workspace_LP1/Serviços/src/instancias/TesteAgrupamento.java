@@ -1,4 +1,10 @@
-package modelo;
+package instancias;
+
+import modelo.Agrupamento;
+import modelo.Assalariado;
+import modelo.Cliente;
+import modelo.Comissionado;
+import modelo.Funcionario;
 
 public class TesteAgrupamento {
 
@@ -33,7 +39,7 @@ public class TesteAgrupamento {
 
 		// criação da lista de funcionários
 		Agrupamento<Funcionario> agrupamento_funcionario = new Agrupamento<>();
-
+		
 		if (agrupamento_funcionario.adiciona(f1)) {
 			System.out.println("\nFuncionário adicionado!");
 		} else {
