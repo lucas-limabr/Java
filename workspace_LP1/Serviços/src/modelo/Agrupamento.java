@@ -3,7 +3,7 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Agrupamento<E> {
+public abstract class Agrupamento<E> {
 
 	private List<E> lista = new ArrayList<>();
 
@@ -40,7 +40,6 @@ public class Agrupamento<E> {
 	}
 
 	public E busca(E elemento) {
-
 		for (E item : lista) {
 			if (item.equals(elemento)) {
 				return item;
@@ -48,6 +47,17 @@ public class Agrupamento<E> {
 		}
 
 		return null;
+	}
+	
+	protected List<E> getLista() {
+		
+		ArrayList<E> copia_lista = new ArrayList<>();
+		
+		for(E item : lista) {
+			copia_lista.add(item);
+		}
+			
+		return copia_lista;
 	}
 
 	public boolean addEmGrupo(List<E> lista) {
@@ -60,15 +70,5 @@ public class Agrupamento<E> {
 		}
 
 		return true;
-	}
-	
-	protected List<E> getLista() {
-		ArrayList<E> lista_copia = new ArrayList<>();
-		
-		for(E item : lista) {
-			lista_copia.add(item);
-		}
-		
-		return lista_copia;
 	}
 }

@@ -26,7 +26,7 @@ public class TesteFaturamento_Historico {
 			Contrato contrato1 = new Contrato(c1, f1, s1);
 
 			// add contratos no Historico
-			if (historico.addContrato(contrato1)) {
+			if (historico.adiciona(contrato1)) {
 				System.out.println("Contrato adicionado com sucesso!");
 			} else {
 				System.out.println("Este contrato já consta na lista!");
@@ -42,7 +42,7 @@ public class TesteFaturamento_Historico {
 
 			Contrato contrato2 = new Contrato(c2, f2, s2);
 
-			if (historico.addContrato(contrato2)) {
+			if (historico.adiciona(contrato2)) {
 				System.out.println("Contrato adicionado com sucesso!");
 			} else {
 				System.out.println("Este contrato já consta na lista!");

@@ -28,15 +28,15 @@ public class TesteCRUD_Contrato {
 			s1 = new Servico("Pintura", 50.0, 5, 6);
 			Contrato contrato1 = new Contrato(c1, f1, s1);
 
-			// testando o método addContrato da classe Historico
+			// testando o método adiciona da classe Historico
 			System.out.println("\n-----------------");
-			if (historico.addContrato(contrato1)) {
+			if (historico.adiciona(contrato1)) {
 				System.out.println("Contrato adicionado com sucesso!");
 			} else {
 				System.out.println("Este contrato já consta na lista!");
 			}
 
-			if (historico.addContrato(contrato1)) {
+			if (historico.adiciona(contrato1)) {
 				System.out.println("Contrato adicionado com sucesso!");
 			} else {
 				System.out.println("Este contrato já consta na lista!");
@@ -46,8 +46,8 @@ public class TesteCRUD_Contrato {
 			historico.informacoes(contrato1);
 
 			System.out.println("\n-----------------");
-			// testando o método removeContrato da classe Historico
-			if (historico.removeContrato(contrato1)) {
+			// testando o método remove da classe Historico
+			if (historico.remove(contrato1)) {
 				System.out.println("Contrato " + contrato1.getNum_ordem() + " removido com sucesso!");
 			} else {
 				System.out.println("Contrato não encontrado");
@@ -62,8 +62,8 @@ public class TesteCRUD_Contrato {
 			s2 = new Servico("Encanamento", 70.0, 3, 4);
 			Contrato contrato2 = new Contrato(c2, f2, s2);
 
-			// testando o método addContrato da classe Historico
-			if (historico.addContrato(contrato2)) {
+			// testando o método adiciona da classe Historico
+			if (historico.adiciona(contrato2)) {
 				System.out.println("Contrato adicionado com sucesso!");
 			} else {
 				System.out.println("Este contrato já consta na lista!");

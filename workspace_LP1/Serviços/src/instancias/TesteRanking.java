@@ -26,7 +26,7 @@ public class TesteRanking {
 			Servico s1 = new Servico("Pintura", 50.0, 5, 6);
 			
 			Contrato contrato1 = new Contrato(c1, f1, s1);
-			historico.addContrato(contrato1);
+			historico.adiciona(contrato1);
 			
 		} catch (LimiteHoras e) {
 			System.out.println(e.getMessage());
@@ -36,7 +36,7 @@ public class TesteRanking {
 			Servico s2 = new Servico("Encanamento", 5000.0, 3, 4);
 			
 			Contrato contrato2 = new Contrato(c2, f2, s2);
-			historico.addContrato(contrato2);
+			historico.adiciona(contrato2);
 			
 		} catch (LimiteHoras e) {
 			System.out.println(e.getMessage());
@@ -57,18 +57,18 @@ public class TesteRanking {
 		
 		Servico s3;
 		try {
-			s3 = new Servico("Mecanico", 20000, 3, 10);
+			s3 = new Servico("Mecanico", 2000, 3, 10);
 			//aqui o cliente c1 contratou mais um serviço, por isso, com este valor ele subiu de categoria
 			//no ranking
 			Contrato contrato3 = new Contrato(c1, f1, s3);
-			historico.addContrato(contrato3);
+			historico.adiciona(contrato3);
 		} catch (LimiteHoras e) {
 			System.out.println(e.getMessage());
 		}
 		
 		codigo_cliente = "C1";
 		//exibindo novamente a categoria de c1 depois dele ter contratado mais um serviço
-		System.out.println("\nA categoria do cliente de código "+codigo_cliente+" é "+
+		System.out.println("\nA categoria do cliente de código "+codigo_cliente+" agora é "+
 		historico.consultarCategoriaCliente(codigo_cliente));
 		
 		System.out.println("-----");

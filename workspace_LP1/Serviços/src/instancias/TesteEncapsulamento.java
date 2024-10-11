@@ -49,7 +49,7 @@ public class TesteEncapsulamento {
 			
 			// criando instância da classe Historico
 			HistoricoContratos historico = new HistoricoContratos();
-			historico.addContrato(contrato1);
+			historico.adiciona(contrato1);
 			
 			// criando uma cópia que recebe um ArrayList de objetos da classe Contrato
 			ArrayList<Contrato> copia_lista = historico.getLista_contratos();
